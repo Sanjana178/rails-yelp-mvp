@@ -1,0 +1,23 @@
+
+<h2><%= @restaurant.name %></h2>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+<p><%= link_to "Edit the restaurant", edit_restaurant_path %></p>
+<%= link_to "Back to list", restaurants_path %>
+
+<p><%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-warning"%></p>
+
+<h2>Reviews</h2>
+<% if @restaurant.reviews.empty? %>
+  <h3>Be first to add your review</h3>
+<% else %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
